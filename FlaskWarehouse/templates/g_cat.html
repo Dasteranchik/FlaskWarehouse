@@ -1,0 +1,40 @@
+﻿{% extends "base.html" %}
+{% block title %}Goods{% endblock %}
+{% block content %}
+<ul class="nav">
+    {% for el in categorys%}
+    <li class="nav-item">
+        <a class="nav-link" href="/goods/{{el.id}}">{{el.name}}</a>
+    </li>
+    {% endfor %}
+</ul>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Category</th>
+            <th scope="col">Name</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Description</th>
+            <th scope="col">Price</th>
+            <th scope="col">Admin</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for el in goods %}
+        <tr>
+            <td>{{el.category}}</td>
+            <td>{{el.name}}</td>
+            <td>{{el.quantity}}</td>
+            <td>{{el.description}}</td>
+            <td>{{el.price}}</td>
+            <td>
+                <form method="POST">
+                    <a href="/goods/{{el.id}}/g_edit" class="btn btn-dark"> Edit </a>
+                    <a href="/goods/{{el.id}}/g_del" class="btn btn-danger"> Delete </a>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,29 @@
+﻿{% extends "base.html" %}
+{% block title %}Category{% endblock %}
+{% block content %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Amount of goods</th>
+                <th scope="col">Admin</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for el in categorys %}
+            <tr>
+                <td>{{el.name}}</td>
+                <td>{{el.description}}</td>
+                <td>Не смог сделать</td>
+                <td>
+                    <form method="POST">
+                        <a href="/category/{{el.id}}/cat_edit" class="btn btn-dark"> Edit </a>
+                        <a href="/category/{{el.id}}/cat_del" class="btn btn-danger"> Delete </a>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
